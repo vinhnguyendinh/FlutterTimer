@@ -13,13 +13,12 @@ class _TimerContainerState extends State<TimerContainer> {
   bool _isActive = false;
 
   final oneSec = const Duration(seconds: 1);
-  Timer _timer;
 
   @override
   void initState() {
     super.initState();
 
-    _timer = Timer.periodic(oneSec, (timer) {
+    Timer.periodic(oneSec, (timer) {
       handleTick();
     });
   }
@@ -35,8 +34,8 @@ class _TimerContainerState extends State<TimerContainer> {
   @override
   Widget build(BuildContext context) {
     int second = _seconds % 60;
-    int minutes = (_seconds / 60).toInt();
-    int hours = (_seconds / (60 * 60)).toInt();
+    int minutes = _seconds ~/ 60;
+    int hours = _seconds ~/ (60 * 60);
 
     return Scaffold(
       appBar: AppBar(
